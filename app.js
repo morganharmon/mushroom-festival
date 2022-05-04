@@ -42,14 +42,14 @@ addMushroomButton.addEventListener('click', () => {
 
 addFriendButton.addEventListener('click', () => {
     // get the name from the input
-    const name = friendInputEl.value;
-    // create a new friend object
-    const friend = { name: name, satisfaction: 1 };
-    // push it into the friends state array, passed in as an argument
+    const name = friendInputEl.value;       
+        // create a new friend object
+    const friend = { name: name || `Prisoner#${Math.floor(Math.random() * 1000)}`, satisfaction: 1 };
+        // push it into the friends state array, passed in as an argument
     friendData.push(friend);
-    // reset the input
+        // reset the input
     friendInputEl.value = '';
-    // display all the friends (use a function here)
+        // display all the friends (use a function here)
     displayFriends();
 });
 
@@ -67,7 +67,7 @@ function displayFriends() {
         //             increment the friends satisfaction and decrement your mushrooms
         //             then display your friends and mushrooms with the updated state
         friendEl.addEventListener('click', () => {
-            if ((friend.satisfaction < 3) && (mushroomCount > 0)) {
+            if (friend.satisfaction < 3 && mushroomCount > 0) {
                 friend.satisfaction++;
                 mushroomCount--;
                 displayFriends();
